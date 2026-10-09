@@ -4,8 +4,26 @@
   font-weight: 400;
 
   color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
+  
+  --primary: #2563EB;
+  --primary-hover: #1D4ED8;
+  --primary-bg: rgba(37, 99, 235, 0.1);
+  --bg: #F1F5F9;
+  --bg2: #FFFFFF;
+  --base: #FFFFFF;
+  --text: #0F172A;
+  --muted: #64748B;
+  --border: #E2E8F0;
+  --card: #FFFFFF;
+  --nav: #FFFFFF;
+  --shadow: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -1px rgba(0,0,0,0.06);
+  --success: #10B981;
+  --success-bg: rgba(16, 185, 129, 0.1);
+  --danger: #EF4444;
+  --accent: #F59E0B;
+
+  color: var(--text);
+  background-color: var(--bg);
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -55,7 +73,7 @@ button:focus-visible {
 @media (prefers-color-scheme: light) {
   :root {
     color: #213547;
-    background-color: #ffffff;
+    background-color: var(--base);
   }
   a:hover {
     color: #747bff;

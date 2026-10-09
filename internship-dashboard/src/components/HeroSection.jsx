@@ -20,9 +20,9 @@ function HeroSection({ searchTerm, setSearchTerm, setActiveTab }) {
                 <span style={{
                     display: 'inline-block',
                     padding: '6px 16px',
-                    background: 'rgba(0, 229, 255, 0.1)',
-                    color: '#00E5FF',
-                    border: '1px solid rgba(0, 229, 255, 0.2)',
+                    background: 'rgba(37, 99, 235, 0.1)',
+                    color: 'var(--primary)',
+                    border: '1px solid #E2E8F0',
                     borderRadius: '20px',
                     fontSize: '14px',
                     fontWeight: '600',
@@ -35,18 +35,18 @@ function HeroSection({ searchTerm, setSearchTerm, setActiveTab }) {
                 <h1 style={{
                     fontSize: '52px',
                     fontWeight: '800',
-                    color: '#F8FAFC',
+                    color: 'var(--text)',
                     marginBottom: '16px',
                     letterSpacing: '-0.025em',
                     lineHeight: '1.2'
                 }}>
                     Find the Perfect Internship with <br />
-                    <span style={{ color: '#00E5FF' }}>InternDost</span>
+                    <span style={{ color: 'var(--primary)' }}>InternDost</span>
                 </h1>
 
                 <p style={{
                     fontSize: '18px',
-                    color: '#94A3B8',
+                    color: 'var(--muted)',
                     marginBottom: '45px',
                     maxWidth: '550px',
                     lineHeight: '1.6'
@@ -64,12 +64,12 @@ function HeroSection({ searchTerm, setSearchTerm, setActiveTab }) {
                         display: 'flex',
                         gap: '10px',
                         maxWidth: '550px',
-                        background: 'rgba(15, 23, 42, 0.6)',
+                        background: 'var(--base)',
                         backdropFilter: 'blur(10px)',
-                        border: '1px solid rgba(255, 255, 255, 0.1)',
+                        border: '1px solid #E2E8F0',
                         padding: '8px',
                         borderRadius: '16px',
-                        boxShadow: '0 10px 30px -5px rgba(0, 0, 0, 0.5)'
+                        boxShadow: 'var(--shadow)'
                     }}
                 >
                     <input
@@ -84,7 +84,7 @@ function HeroSection({ searchTerm, setSearchTerm, setActiveTab }) {
                             fontSize: '16px',
                             outline: 'none',
                             background: 'transparent',
-                            color: '#F8FAFC',
+                            color: 'var(--text)',
                         }}
                     />
                     <button
@@ -92,7 +92,7 @@ function HeroSection({ searchTerm, setSearchTerm, setActiveTab }) {
                         style={{
                             padding: '12px 32px',
                             background: '#FFD700',
-                            color: '#0B1120',
+                            color: 'var(--base)',
                             border: 'none',
                             borderRadius: '12px',
                             fontWeight: '700',
@@ -123,7 +123,7 @@ function HeroSection({ searchTerm, setSearchTerm, setActiveTab }) {
                     position: 'absolute',
                     width: '450px',
                     height: '450px',
-                    background: 'radial-gradient(circle, rgba(0, 229, 255, 0.2) 0%, rgba(0, 229, 255, 0) 70%)',
+                    background: 'radial-gradient(circle, rgba(37, 99, 235, 0.2) 0%, rgba(0, 229, 255, 0) 70%)',
                     borderRadius: '50%',
                     zIndex: 0,
                     pointerEvents: 'none'
