@@ -78,6 +78,11 @@ const connectDB = async () => {
 
 connectDB();
 
+// Basic health check route for UptimeRobot
+app.get('/', (req, res) => {
+    res.status(200).send('Intern Dost Backend is running! 🚀');
+});
+
 // Validation Schemas
 const registerSchema = z.object({
     name: z.string().optional(),
