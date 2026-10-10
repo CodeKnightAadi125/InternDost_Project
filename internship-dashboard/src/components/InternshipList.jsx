@@ -24,7 +24,7 @@ function InternshipList({ searchTerm, setSearchTerm }) {
     const fetchInternships = () => {
         setLoading(true);
         setError(false);
-        fetch('http://localhost:5000/api/internships')
+        fetch(`${import.meta.env.VITE_BACKEND_URL}/api/internships`)
             .then((res) => {
                 if (!res.ok) throw new Error('Failed to fetch');
                 return res.json();
@@ -74,7 +74,7 @@ function InternshipList({ searchTerm, setSearchTerm }) {
                 formDataToSend.append('resume', formData.resume);
             }
 
-            const response = await fetch('http://localhost:5000/api/applications', {
+            const response = await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/applications`, {
                 method: 'POST',
                 headers: { 
                     'Authorization': `Bearer ${token}`

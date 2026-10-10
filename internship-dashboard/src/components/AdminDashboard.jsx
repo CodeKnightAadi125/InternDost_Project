@@ -69,7 +69,7 @@ function AdminDashboard({ activeTab, setActiveTab }) {
         setErrorMsg(''); setSuccessMsg(''); setIsLoading(true);
         try {
             const token = localStorage.getItem('internDost_token');
-            const response = await fetch('http://localhost:5000/api/admin/internships', {
+            const response = await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/admin/internships`, {
                 method: 'POST', headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${token}` }, body: JSON.stringify(formData)
             });
             if (!response.ok) throw new Error('Failed to publish internship');
@@ -84,7 +84,7 @@ function AdminDashboard({ activeTab, setActiveTab }) {
         setAppsLoading(true);
         try {
             const token = localStorage.getItem('internDost_token');
-            const response = await fetch('http://localhost:5000/api/admin/applications', { headers: { 'Authorization': `Bearer ${token}` } });
+            const response = await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/admin/applications`, { headers: { 'Authorization': `Bearer ${token}` } });
             if (response.ok) setApplications(await response.json());
         } catch (err) { console.error("Failed to fetch applications:", err); } 
         finally { setAppsLoading(false); }
@@ -93,7 +93,7 @@ function AdminDashboard({ activeTab, setActiveTab }) {
     const fetchAllInternships = async () => {
         setInternshipsLoading(true);
         try {
-            const response = await fetch('http://localhost:5000/api/internships');
+            const response = await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/internships`);
             if (response.ok) setAllInternships(await response.json());
         } catch (error) { console.error('Error fetching internships:', error); } 
         finally { setInternshipsLoading(false); }
@@ -103,7 +103,7 @@ function AdminDashboard({ activeTab, setActiveTab }) {
         setMessagesLoading(true);
         try {
             const token = localStorage.getItem('internDost_token');
-            const response = await fetch('http://localhost:5000/api/admin/messages', { headers: { 'Authorization': `Bearer ${token}` } });
+            const response = await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/admin/messages`, { headers: { 'Authorization': `Bearer ${token}` } });
             if (response.ok) setContactMessages(await response.json());
         } catch (error) { console.error('Error fetching messages:', error); } 
         finally { setMessagesLoading(false); }
@@ -113,7 +113,7 @@ function AdminDashboard({ activeTab, setActiveTab }) {
         if (!confirm('Are you sure you want to delete this internship?')) return;
         try {
             const token = localStorage.getItem('internDost_token');
-            const response = await fetch(`http://localhost:5000/api/admin/internships/${id}`, { method: 'DELETE', headers: { 'Authorization': `Bearer ${token}` } });
+            const response = await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/admin/internships/${id}`, { method: 'DELETE', headers: { 'Authorization': `Bearer ${token}` } });
             if (response.ok) fetchAllInternships();
             else alert('Failed to delete internship');
         } catch (error) { console.error('Error deleting internship:', error); alert('Failed to delete internship'); }
@@ -122,7 +122,7 @@ function AdminDashboard({ activeTab, setActiveTab }) {
     const handleStatusChange = async (appId, newStatus) => {
         try {
             const token = localStorage.getItem('internDost_token');
-            const res = await fetch(`http://localhost:5000/api/admin/applications/${appId}/status`, {
+            const res = await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/admin/applications/${appId}/status`, {
                 method: 'PUT',
                 headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${token}` },
                 body: JSON.stringify({ status: newStatus })
@@ -141,7 +141,7 @@ function AdminDashboard({ activeTab, setActiveTab }) {
         setAdminsLoading(true);
         try {
             const token = localStorage.getItem('internDost_token');
-            const response = await fetch('http://localhost:5000/api/admin/list', { headers: { 'Authorization': `Bearer ${token}` } });
+            const response = await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/admin/list`, { headers: { 'Authorization': `Bearer ${token}` } });
             if (response.ok) setAdmins(await response.json());
         } catch (error) { console.error('Error fetching admins:', error); } 
         finally { setAdminsLoading(false); }
@@ -152,7 +152,7 @@ function AdminDashboard({ activeTab, setActiveTab }) {
         setAdminErrorMsg(''); setAdminSuccessMsg(''); setIsAdminLoading(true);
         try {
             const token = localStorage.getItem('internDost_token');
-            const response = await fetch('http://localhost:5000/api/admin/create', {
+            const response = await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/admin/create`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${token}` },
                 body: JSON.stringify(adminFormData)
@@ -175,7 +175,7 @@ function AdminDashboard({ activeTab, setActiveTab }) {
         if (!confirm('Are you sure you want to delete this admin account?')) return;
         try {
             const token = localStorage.getItem('internDost_token');
-            const response = await fetch(`http://localhost:5000/api/admin/${id}`, { method: 'DELETE', headers: { 'Authorization': `Bearer ${token}` } });
+            const response = await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/admin/${id}`, { method: 'DELETE', headers: { 'Authorization': `Bearer ${token}` } });
             if (response.ok) fetchAdmins();
             else {
                 const data = await response.json();
@@ -331,7 +331,7 @@ function AdminDashboard({ activeTab, setActiveTab }) {
                                                 <td style={{ ...tdStyle, maxWidth: '250px' }}>
                                                     <div style={{ fontSize: '13px', color: 'var(--muted)', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }} title={app.whyHire}>{app.whyHire || 'N/A'}</div>
                                                     <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginTop: '6px' }}>
-                                                        {app.resume && <a href={`http://localhost:5000${app.resume}`} target="_blank" rel="noreferrer" style={{ fontSize: '12px', color: 'var(--primary)', textDecoration: 'none', fontWeight: '600' }}>📄 View Resume</a>}
+                                                        {app.resume && <a href={`${import.meta.env.VITE_BACKEND_URL}${app.resume}`} target="_blank" rel="noreferrer" style={{ fontSize: '12px', color: 'var(--primary)', textDecoration: 'none', fontWeight: '600' }}>📄 View Resume</a>}
                                                     </div>
                                                 </td>
                                                 <td style={tdStyle}>

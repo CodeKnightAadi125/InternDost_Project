@@ -21,12 +21,12 @@ function Profile({ setActiveTab }) {
             const token = localStorage.getItem('internDost_token');
             if (!token) return;
             try {
-                const appRes = await fetch('http://localhost:5000/api/applications/user', { headers: { 'Authorization': `Bearer ${token}` } });
+                const appRes = await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/applications/user`, { headers: { 'Authorization': `Bearer ${token}` } });
                 if (appRes.ok) setAppliedInternships(await appRes.json());
             } catch (err) { console.error('Failed to load apps'); }
 
             try {
-                const profRes = await fetch('http://localhost:5000/api/profile', { headers: { 'Authorization': `Bearer ${token}` } });
+                const profRes = await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/profile`, { headers: { 'Authorization': `Bearer ${token}` } });
                 if (profRes.ok) {
                     const data = await profRes.json();
                     setProfileData({ ...profileData, ...data });
@@ -43,7 +43,7 @@ function Profile({ setActiveTab }) {
         const token = localStorage.getItem('internDost_token');
         if (!token) return;
         try {
-            await fetch('http://localhost:5000/api/profile', {
+            await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/profile`, {
                 method: 'PUT',
                 headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${token}` },
                 body: JSON.stringify(profileData)

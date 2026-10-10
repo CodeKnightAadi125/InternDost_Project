@@ -46,7 +46,7 @@ function Login({ setActiveTab }) {
         try {
             if (activeRole === 'admin') {
                 // --- ADMIN LOGIN REQUEST ---
-                const response = await fetch('http://localhost:5000/api/admin/login', {
+                const response = await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/admin/login`, {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({ email, password })
@@ -62,7 +62,7 @@ function Login({ setActiveTab }) {
             } else {
                 // --- USER LOGIN / REGISTER REQUEST ---
                 if (isLoginView) {
-                    const response = await fetch('http://localhost:5000/api/login', {
+                    const response = await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/login`, {
                         method: 'POST',
                         headers: { 'Content-Type': 'application/json' },
                         body: JSON.stringify({ email, password })
@@ -76,7 +76,7 @@ function Login({ setActiveTab }) {
                     setActiveTab('home');
 
                 } else {
-                    const response = await fetch('http://localhost:5000/api/register', {
+                    const response = await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/register`, {
                         method: 'POST',
                         headers: { 'Content-Type': 'application/json' },
                         body: JSON.stringify({ name, email, password })
